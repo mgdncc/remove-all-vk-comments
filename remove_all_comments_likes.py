@@ -76,7 +76,7 @@ class VkDeleter:
         return zip(type_, owner_id, post_id, posts)
 
     def log(self, message: str, d_type: str,  link: str, err: Exception = None):
-        print(f"[{OBJECTS_TYPES[d_type]}] {self.counters[d_type][0]}/{self.counters[d_type][1]} "
+        print(f"[{OBJECTS_TYPES[d_type]}] Успешно: {self.counters[d_type][0]}/{self.counters[d_type][1]} "
               f"Всего: {self.counters['total'][0]}/{self.counters['total'][1]}: {message} {link}")
         if err is not None:
             print(err)
@@ -177,7 +177,7 @@ if __name__ == "__main__":
         assert paths, f"Не введён ни один путь(к комментариям или лайкам. --{COMMENTS}, --{LIKES})\n{parser.format_usage()}"
 
         if isinstance(args.random_timeout, list):
-            if args.random_timeout[0] > args.random_timeout[1] or args.random_timeout[0] < 0:
+            if not 0 <= args.random_timeout[0] <= args.random_timeout[1]:
                 raise argparse.ArgumentError(_rand_timeout, f"{RANDOM_TIMEOUT} аргументы должны быть >= 0 и a <= b ")
         processor = VkDeleter(paths=paths, access_token=args.token,
                                       timeout=args.timeout, max_tasks=args.max_tasks, random_timeout=args.random_timeout)
