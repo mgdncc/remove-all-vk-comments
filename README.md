@@ -1,13 +1,13 @@
-# Python vk.com comment deleter
-Удаляем все комментарии из vk.com
+# Python vk.com comment-likes deleter
+Удаляем все комментарии и/или лайки из vk.com
 
 ## Подготовка к выполнению
-Нет технической возможности через API стянуть все ваши комментарии
+Нет технической возможности через API стянуть все ваши комментарии и лайки
 автоматически, поэтому нужно их запросить при помощи: 
 https://vk.com/data_protection?section=rules 
 
 По запросу вам выдаст архив со всеми данными, которые вы запросили, после распаковки
-которого у вас появится директория comments
+которого у вас появится директория comments и likes.
 
 Так же для работы вам понадобится ваш access token, его можно получить, самостоятельно зарегистрировав
 приложения, либо перейти по ссылке: 
@@ -18,4 +18,8 @@ https://oauth.vk.com/authorize?client_id=6061680&display=page&scope=wall&respons
 ## Установка и запуск
 1. Для корректной работы необходимо наличие python 3.x и pip
 2. Устанавливаете зависимости проекта `pip3 install -r requirements.txt`
-3. Запускаете `python3 delete_all_comments.py --token your_token --path path_to_comments_directory`
+3. Для удаления комментариев и лайков запустить:`python3 delete_all_comments_likes.py --token your_token --comments_path path_to_comments_directory --likes_path path_to_likes_directory`
+4. Так же есть опциональные параметры:<br />
+`--timeout` Время между запросами. По умолчанию 1.0 сек.<br />
+`--random_timeout` Случайное время между запросами.(Защита от ввода капчи) По умолчанию отключено. Приимает 2 числа.<br />
+`--max_tasks` Максимальное число async задач (Для защиты от ввода капчи). По умолчанию 1.
