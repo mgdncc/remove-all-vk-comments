@@ -21,5 +21,5 @@ https://oauth.vk.com/authorize?client_id=6061680&display=page&scope=wall&respons
 3. Для удаления комментариев и лайков запустить:`python3 delete_all_comments_likes.py --token your_token --comments_path path_to_comments_directory --likes_path path_to_likes_directory`
 4. Так же есть опциональные параметры:<br />
 `--timeout` Время между запросами. По умолчанию 1.0 сек.<br />
-`--random_timeout` Случайное время между запросами.(Защита от ввода капчи) По умолчанию отключено. Приимает 2 числа.<br />
+`--random_timeout` Случайное время между запросами.(Защита от ввода капчи) По умолчанию отключено. Принимает 2 числа.<br />
 `--max_tasks` Максимальное число async задач (Для защиты от ввода капчи). По умолчанию 1.
